@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NeXus Data Format &#8212; NeXus Data Format 3.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nxsphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NeXus Data Format 3.2 documentation"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="top" title="NeXus Data Format 3.2 documentation" href="contents.html" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+      .related { display: none; }
+      
+    </style>
+    <script type="text/javascript">
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head>
+  <body role="document">
+<div class="pageheader">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="ref_doc.html">Reference Documentation</a></li>
+    <li><a href="https://github.com/nexusformat">NeXus Github</a></li>
+  </ul>
+  <div>
+    <a href="#">
+      <img src="_static/NeXus.png" alt="NeXus" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="#">NeXus Home</a>&nbsp;|</li>
+        <li><a href="contents.html">Table of Contents</a> &raquo;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Questions? Suggestions?</h3>
+
+<p>Join the <a href="mailinglist.html">NeXus mailing list</a>:</p>
+<form action="http://groups.google.com/group/sphinx-users/boxsubscribe"
+      style="padding-left: 0.5em">
+  <input type="text" name="email" value="your@email" style="font-size: 90%; width: 120px"
+         onfocus="$(this).val('');"/>
+  <input type="submit" name="sub" value="Subscribe" style="font-size: 90%; width: 70px"/>
+</form>
+<p>You can also open an issue on the
+  <a href="https://github.com/nexusformat">NeXus Github</a>.</p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>
+    NeXus is developed as an international standard by scientists and 
+    programmers representing major scientific facilities in Europe, Asia, 
+    Australia, and North America in order to facilitate greater cooperation in 
+    the analysis and visualization of neutron, x-ray, and muon 
+    data.</p>
+
+  <h2 style="margin-bottom: 0">Introduction</h2>
+  <p>
+    NeXus is built on top of the scientific data format HDF5 and adds 
+    domain-specific rules for organizing data within HDF5 files in addition to 
+    a dictionary of well-defined domain-specific field names. </p>
+    <!-- keep it shorter, this is redundant
+  <p>
+    We provide here an introduction to the concepts behind the NeXus format
+    and the principles of its hierarchical design. </p>
+    -->
+  <table class="contentstable" align="center" style="margin-left: 30px"><tr>
+    <td width="50%">
+      <p class="biglink"><a class="biglink" href="http://www.nexusformat.org/doc/impatient">Tutorial</a><br/>
+         <span class="linkdescr">how to use NeXus</span></p>
+      <p class="biglink"><a class="biglink" href="design.html">Design</a><br/>
+         <span class="linkdescr">overview of NeXus design</span></p>
+      <p class="biglink"><a class="biglink" href="examples/index.html">Examples</a><br/>
+         <span class="linkdescr">writing and reading NeXus data files
+         <br />
+         <a href="examples/code_napi.html">NAPI</a>,
+         <a href="examples/code_native.html">native C</a>,
+         <a href="examples/h5py/index.html">Python + h5py</a>,
+         <a href="examples/matlab/index.html">MatLab</a>,
+         </span></p>
+    </td><td width="50%">
+      <p class="biglink"><a class="biglink" href="napi.html">API</a><br/>
+         <span class="linkdescr">overview of the NeXus API</span></p>
+      <p class="biglink"><a class="biglink" href="faq.html">FAQ</a><br/>
+         <span class="linkdescr">commonly asked questions</span></p>
+      <p class="biglink"><a class="biglink" href="contents.html">Contents</a><br/>
+         <span class="linkdescr">Table of Contents to User Guide and Reference Documentation</span></p>
+    </td></tr>
+  </table>
+
+  <h2 style="margin-bottom: 0">Reference</h2>
+  <p>
+    NeXus has defined a set of base classes that contain dictionaries of metadata required in x-ray and neutron 
+    data analysis and a set of application definitions that define what items should be present for
+    specific analysis applications. These 
+    <a href="classes/index.html">NXDL class definitions</a>
+    are defined in XML files utilizing the 
+    <a href="nxdl.html">NeXus Data Language (NXDL)</a></p>
+  <table class="contentstable" align="center" style="margin-left: 30px"><tr>
+    <td width="50%">
+      <p class="biglink"><a class="biglink" href="classes/base_classes/index.html">Base Classes</a><br/>
+         <span class="linkdescr">what can be included</span></p>
+    </td><td width="50%">
+      <p class="biglink"><a class="biglink" href="classes/applications/index.html">Application Definitions</a><br/>
+         <span class="linkdescr">what should be included</span></p>
+    </td></tr>
+  </table>
+  <h2 style="margin-bottom: 0">Utilities</h2>
+  <p>
+    A number of utilities are available for viewing, manipulating and analyzing NeXus files. Some
+    are specific to NeXus but HDF5 utilities can also be used.</p>
+  <table class="contentstable" align="center" style="margin-left: 30px"><tr>
+    <td width="50%">
+      <p class="biglink"><a class="biglink" href="utilities.html">NeXus Utilities</a><br/>
+         <span class="linkdescr">utilities specific to NeXus</span></p>
+    </td><td width="50%">
+      <p class="biglink"><a class="biglink" href="utilities.html#hdf-tools">HDF5 Utilities</a><br/>
+         <span class="linkdescr">generic HDF5 utilities</span></p>
+    </td></tr>
+  </table>
+  <h2>Contributor Guide</h2>
+
+  <p>If you want to contribute to the project,
+    this part of the documentation is for you.</p>
+
+    <ul>
+      <li><a href="devguide.html">Sphinx Developer’s Guide</a></li>
+      <li><a href="authors.html">Sphinx Authors</a></li>
+    </ul>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="#">NeXus Home</a>&nbsp;|</li>
+        <li><a href="contents.html">Table of Contents</a> &raquo;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 1996-2016, http://nexusformat.org.
+      Last updated on 2016-10-13 21:10:13 GMT+00:00.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>
