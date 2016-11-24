@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.3.1.26. NXguide &#8212; NeXus Data Format 3.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nxsphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NeXus Data Format 3.2 documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="top" title="NeXus Data Format 3.2 documentation" href="../../contents.html" />
+    <link rel="up" title="3.3.1. Base Class Definitions" href="index.html" />
+    <link rel="next" title="3.3.1.27. NXinsertion_device" href="NXinsertion_device.html" />
+    <link rel="prev" title="3.3.1.25. NXgrating" href="NXgrating.html" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script type="text/javascript">
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head>
+  <body role="document">
+<div class="pageheader">
+  <ul>
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../user_manual.html">User Manual</a></li>
+    <li><a href="../../ref_doc.html">Reference Documentation</a></li>
+    <li><a href="https://github.com/nexusformat">NeXus Github</a></li>
+  </ul>
+  <div>
+    <a href="../../index.html">
+      <img src="../../_static/NeXus.png" alt="NeXus" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="NXinsertion_device.html" title="3.3.1.27. NXinsertion_device"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="NXgrating.html" title="3.3.1.25. NXgrating"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">NeXus Home</a>&nbsp;|</li>
+        <li><a href="../../contents.html">Table of Contents</a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >3.3. NeXus Class Definitions</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">3.3.1. Base Class Definitions</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="NXgrating.html"
+                        title="previous chapter">3.3.1.25. NXgrating</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="NXinsertion_device.html"
+                        title="next chapter">3.3.1.27. NXinsertion_device</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/classes/base_classes/NXguide.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="nxguide">
+<span id="index-0"></span><span id="id1"></span><h1>3.3.1.26. NXguide<a class="headerlink" href="#nxguide" title="Permalink to this headline">¶</a></h1>
+<p><strong>Status</strong>:</p>
+<blockquote>
+<div>base class, extends <a class="reference internal" href="NXobject.html#nxobject"><span class="std std-ref">NXobject</span></a>, version 1.0</div></blockquote>
+<p><strong>Description</strong>:</p>
+<blockquote>
+<div><p>A neutron optical element to direct the path of the beam.</p>
+<p><a class="reference internal" href="#nxguide"><span class="std std-ref">NXguide</span></a> is used by neutron instruments to describe
+a guide consists of several mirrors building a shape through which
+neutrons can be guided or directed. The simplest such form is box shaped
+although elliptical guides are gaining in popularity.
+The individual parts of a guide usually have common characteristics
+but there are cases where they are different.
+For example,  a neutron guide might consist of 2 or 4 coated walls or
+a supermirror bender with multiple, coated vanes.</p>
+<p>To describe polarizing supermirrors such as used in neutron reflection,
+it may be necessary to revise this definition of <a class="reference internal" href="#nxguide"><span class="std std-ref">NXguide</span></a>
+to include <a class="reference internal" href="NXpolarizer.html#nxpolarizer"><span class="std std-ref">NXpolarizer</span></a> and/or <a class="reference internal" href="NXmirror.html#nxmirror"><span class="std std-ref">NXmirror</span></a>.</p>
+<p>When even greater complexity exists in the definition of what
+constitutes a <em>guide</em>,  it has been suggested that <a class="reference internal" href="#nxguide"><span class="std std-ref">NXguide</span></a>
+be redefined as a <a class="reference internal" href="NXcollection.html#nxcollection"><span class="std std-ref">NXcollection</span></a> of <a class="reference internal" href="NXmirror.html#nxmirror"><span class="std std-ref">NXmirror</span></a> each
+having their own <a class="reference internal" href="NXgeometry.html#nxgeometry"><span class="std std-ref">NXgeometry</span></a> describing their location(s).</p>
+<p>For the more general case when describing mirrors, consider using
+<a class="reference internal" href="NXmirror.html#nxmirror"><span class="std std-ref">NXmirror</span></a>.</p>
+<p>NOTE: The NeXus International Advisory Committee welcomes
+comments for revision and improvement of
+this definition of <a class="reference internal" href="#nxguide"><span class="std std-ref">NXguide</span></a>.</p>
+</div></blockquote>
+<p><strong>Symbols</strong>:</p>
+<blockquote>
+<div><p><strong>nsurf</strong>: number of reflecting surfaces</p>
+<p><strong>nwl</strong>: number of wavelengths</p>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Groups cited</strong>:</dt>
+<dd><a class="reference internal" href="NXdata.html#nxdata"><span class="std std-ref">NXdata</span></a>, <a class="reference internal" href="NXgeometry.html#nxgeometry"><span class="std std-ref">NXgeometry</span></a></dd>
+</dl>
+<p id="index-1"><strong>Structure</strong>:</p>
+<blockquote>
+<div><p id="index-2"><strong>description</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><span class="std std-ref">NX_CHAR</span></a></p>
+<blockquote>
+<div>A description of this particular instance of <code class="docutils literal"><span class="pre">NXguide</span></code>.</div></blockquote>
+<p id="index-3"><strong>incident_angle</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><span class="std std-ref">NX_FLOAT</span></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-angle"><span class="std std-ref">NX_ANGLE</span></a>}</p>
+<blockquote>
+<div>TODO: documentation needed</div></blockquote>
+<p id="index-4"><strong>bend_angle_x</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><span class="std std-ref">NX_FLOAT</span></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-angle"><span class="std std-ref">NX_ANGLE</span></a>}</p>
+<blockquote>
+<div>TODO: documentation needed</div></blockquote>
+<p id="index-5"><strong>bend_angle_y</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><span class="std std-ref">NX_FLOAT</span></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-angle"><span class="std std-ref">NX_ANGLE</span></a>}</p>
+<blockquote>
+<div>TODO: documentation needed</div></blockquote>
+<p id="index-6"><strong>interior_atmosphere</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><span class="std std-ref">NX_CHAR</span></a></p>
+<blockquote>
+<div>Any of these values: <code class="docutils literal"><span class="pre">vacuum</span></code> | <code class="docutils literal"><span class="pre">helium</span></code> | <code class="docutils literal"><span class="pre">argon</span></code></div></blockquote>
+<p id="index-7"><strong>external_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><span class="std std-ref">NX_CHAR</span></a></p>
+<blockquote>
+<div>external material outside substrate</div></blockquote>
+<p id="index-8"><strong>m_value[nsurf]</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><span class="std std-ref">NX_FLOAT</span></a></p>
+<blockquote>
+<div>The <code class="docutils literal"><span class="pre">m</span></code> value for a supermirror, which defines the supermirror
+regime in multiples of the critical angle of Nickel.</div></blockquote>
+<p id="index-9"><strong>substrate_material[nsurf]</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><span class="std std-ref">NX_FLOAT</span></a></p>
+<blockquote>
+<div>TODO: documentation needed</div></blockquote>
+<p id="index-10"><strong>substrate_thickness[nsurf]</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><span class="std std-ref">NX_FLOAT</span></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><span class="std std-ref">NX_LENGTH</span></a>}</p>
+<blockquote>
+<div>TODO: documentation needed</div></blockquote>
+<p id="index-11"><strong>coating_material[nsurf]</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><span class="std std-ref">NX_FLOAT</span></a></p>
+<blockquote>
+<div>TODO: documentation needed</div></blockquote>
+<p id="index-12"><strong>substrate_roughness[nsurf]</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><span class="std std-ref">NX_FLOAT</span></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><span class="std std-ref">NX_LENGTH</span></a>}</p>
+<blockquote>
+<div>TODO: documentation needed</div></blockquote>
+<p id="index-13"><strong>coating_roughness[nsurf]</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><span class="std std-ref">NX_FLOAT</span></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><span class="std std-ref">NX_LENGTH</span></a>}</p>
+<blockquote>
+<div>TODO: documentation needed</div></blockquote>
+<p id="index-14"><strong>number_sections</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-int"><span class="std std-ref">NX_INT</span></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-unitless"><span class="std std-ref">NX_UNITLESS</span></a>}</p>
+<blockquote>
+<div>number of substrate sections (also called <code class="docutils literal"><span class="pre">nsurf</span></code> as an
+index in the <code class="docutils literal"><span class="pre">NXguide</span></code> specification)</div></blockquote>
+<p><strong>(geometry)</strong>: <a class="reference internal" href="NXgeometry.html#nxgeometry"><span class="std std-ref">NXgeometry</span></a></p>
+<blockquote>
+<div>TODO:  Explain what this NXgeometry group means.  What is intended here?</div></blockquote>
+<p><strong>reflectivity</strong>: <a class="reference internal" href="NXdata.html#nxdata"><span class="std std-ref">NXdata</span></a></p>
+<blockquote>
+<div><p>Reflectivity as function of reflecting surface and wavelength</p>
+<p id="index-15"><strong>&#64;signal</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><span class="std std-ref">NX_CHAR</span></a></p>
+<blockquote>
+<div>Obligatory value:  <code class="docutils literal"><span class="pre">data</span></code></div></blockquote>
+<p id="index-16"><strong>&#64;axes</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><span class="std std-ref">NX_CHAR</span></a></p>
+<blockquote>
+<div>Obligatory value:  <code class="docutils literal"><span class="pre">surface</span> <span class="pre">wavelength</span></code></div></blockquote>
+<p id="index-17"><strong>&#64;surface_indices</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><span class="std std-ref">NX_CHAR</span></a></p>
+<blockquote>
+<div>Obligatory value:  <code class="docutils literal"><span class="pre">0</span></code></div></blockquote>
+<p id="index-18"><strong>&#64;wavelength_indices</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><span class="std std-ref">NX_CHAR</span></a></p>
+<blockquote>
+<div>Obligatory value:  <code class="docutils literal"><span class="pre">1</span></code></div></blockquote>
+<p id="index-19"><strong>data[nsurf, nwl]</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><span class="std std-ref">NX_NUMBER</span></a></p>
+<blockquote>
+<div>reflectivity of each surface as a function of wavelength</div></blockquote>
+<p id="index-20"><strong>surface[nsurf]</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><span class="std std-ref">NX_NUMBER</span></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-any"><span class="std std-ref">NX_ANY</span></a>}</p>
+<blockquote>
+<div>List of surfaces.  Probably best to use index
+numbers but the specification is very loose.</div></blockquote>
+<p id="index-21"><strong>wavelength[nwl]</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><span class="std std-ref">NX_NUMBER</span></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-wavelength"><span class="std std-ref">NX_WAVELENGTH</span></a>}</p>
+<blockquote>
+<div>wavelengths at which reflectivity was measured</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>NXDL Source</strong>:</dt>
+<dd><a class="reference external" href="https://github.com/nexusformat/definitions/blob/master/base_classes/NXguide.nxdl.xml">https://github.com/nexusformat/definitions/blob/master/base_classes/NXguide.nxdl.xml</a></dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="NXinsertion_device.html" title="3.3.1.27. NXinsertion_device"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="NXgrating.html" title="3.3.1.25. NXgrating"
+             >previous</a> |</li>
+        <li><a href="../../index.html">NeXus Home</a>&nbsp;|</li>
+        <li><a href="../../contents.html">Table of Contents</a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >3.3. NeXus Class Definitions</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" >3.3.1. Base Class Definitions</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="../../copyright.html">Copyright</a> 1996-2016, http://nexusformat.org.
+      Last updated on 2016-10-13 21:06:42 GMT+00:00.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>
