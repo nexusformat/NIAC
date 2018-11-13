@@ -76,20 +76,20 @@ In NXdata NeXus collects data to be plotted. In order to do perform more thoroug
 
 Mark Basham pointed out that the target attribute pointing to the original data in NXdetector  from NXdata is broken when the data pointed to is an linked external file. We may not even have the right to open the external file and add the target attribute to the dataset. 
 
-Proposal from Mark B: The attribute datasetname_target can be used in the same way as the attribute target to a dataset is used but it is attached to the parent group. 
+Proposal from Mark B: The attribute DATASETNAME_target can be used in the same way as the attribute target to a dataset is used but it is attached to the parent group. 
 
 Extending the target to annotate the target pointing to an external file does not work because the attribute may be attached to a dataset in an external file which we do not have control over. 
 
 There is a general problem relating data in different files with each other. 
 
-Armando suggests to have a dataset_target field which is a soft link to the group containing the dataset. 
+Armando suggests to have a DATASETNAME_target field which is a soft link to the group containing the dataset. 
 
 No conclusion was reached. We closed by defining an
 action item as follows: Armando and Mark Basham work out together how to do this in a proper way. Both taking into account NeXus ways of doing things and the technical possibilities of HDF5. They come back at a later stage with a documented proposal with examples. 
 
 ### NXptycho
 
-This is coming from the CXI community who actual took NeXus, liked it but decided that reading and writing attributes is impossible. Mark Basham put the attributes back again. The resulting files are compatible with both XCI and NeXus. 
+This is coming from the CXI community who actual took NeXus, liked it but decided that reading and writing attributes is impossible. Mark Basham put the attributes back again. The resulting files are compatible with both CXI and NeXus. 
 
 A prerequisite for this application definition is an additional filed in the NXbeam base class which describes the extent of the beam. This change was proposed and voted for with:
 
@@ -105,49 +105,49 @@ Results of the vote: All in favor.
 
 ### NXptycho again
 
-Mark Basham pointed out that XCI describes more methods then ptychography. Thus we need to be more specific  with the name of the application definition.  
+Mark Basham pointed out that CXI describes more methods then ptychography. Thus we need to be more specific  with the name of the application definition.  
 
-The proposal then is to rename NXxci to  NXxciptycho. Result: All in favor
+The proposal then is to rename NXcxi to  NXcxi_ptycho. Result: All in favor
 
 
 ### HDF5XMP
 
 The NIAC agreed in an earlier meeting that it would be nice if file managers could show a sensible thumbnail when encountering NeXus files. A suitable approach to achieve this was implemented by Ben Watts with the help of some funds from PSI. 
  
-Ben Watts informed the NISC about what has been done. It is possible to have a user block in a HDF5 file, before the actual HDF5 content starts. The approach is to place meta data and thumbnails in there.  There will be our own magic string which describes the content of our meta data in XMP format. This is a few keywords and a thumbnail. There are already plugins for most major file browsers on different OS which can work with this extra information. These plugins will be fed upstream into OS distributions.  There is python code to add thumbnails  and XMP data to the HDF5 file. Sidecar files with the xmp extension are also supported. The size of that user block has to be defined when opening the file. 
+Ben Watts informed the NIAC about what has been done. It is possible to have a user block in a HDF5 file, before the actual HDF5 content starts. The approach is to place meta data and thumbnails in there.  There will be our own magic string which describes the content of our meta data in XMP format. This is a few keywords and a thumbnail. There are already plugins for most major file browsers on different OS which can work with this extra information. These plugins will be fed upstream into OS distributions.  There is python code to add thumbnails  and XMP data to the HDF5 file. Sidecar files with the xmp extension are also supported. The size of that user block has to be defined when opening the file. 
 
 The NIAC thanks Ben Watts and PSI for implementing this. 
 
 ### Uncertainties, continuation
 
-Pete Jemian demonstrates his proposal. He proposes a uncertainties attribute to a dataset which as a value holds the name of another dataset containing the uncertainties. With the same shape as the original dataset. 
+Pete Jemian demonstrates his proposal. He proposes an uncertainties attribute to a dataset which as a value holds the name of another dataset containing the uncertainties. With the same shape as the original dataset. 
 
 Comment by Mark Basham: this does not work for linked datasets as you cannot add the attribute to the dataset in the external file. Datasetname_errors will work because in itself it can be a link. 
 
 Proposals:
 
-Ben: uncertainties go into a dataset called datasetname_error. We remove the error and uncertainties field from NXdata. 
+Ben: uncertainties go into a dataset called DATASETNAME_error. We remove the error and uncertainties field from NXdata. 
 
-Armando: datasetname_errors to be used as a general pattern when an error field is required.  
+Armando: DATASETNAME_errors to be used as a general pattern when an error field is required.  
 
-Armandos proposal accepted with all YES
+Armando's proposal accepted with all YES
 
-The error and uncertainties fields in NXdata to be marked deprecated, 8 YES
+The `errors` field and `uncertainties` attribute in NXdata to be marked deprecated, 8 YES
 
 ### Attribute Mask and Normalisation
 
-We started the discussion by clarifying that NXdata is not only for plotting. It is used as a container for a data object. Especially in processed data.
+We started the discussion by clarifying that NXdata is not only for plotting. It is used as a container for a data object. Especially in processed data.  It was noted that NXprocess is intended for processed data.
 
-At times, there are invalid pixels in an array holding data from a detector. A means is needed to identify such pixels. This is commonly down with a mask field. 
+At times, there are invalid pixels in an array holding data from a detector. A means is needed to identify such pixels. This is commonly done with a mask field. 
 
-Proposal: datasetname_mask as a general way to specify a mask. We use the conventions as described for NXdetector/pixel_mask with the option to use less that 32 bit. 
+Proposal: DATASETNAME_mask as a general way to specify a mask. We use the conventions as described for NXdetector/pixel_mask with the option to use less that 32 bit. 
 
 1 against, all others(10) YES
 
 
 It occurs that there is a need to divide a dataset with another one to normalize it. 
 
-Rays proposal: datasetname_weights anywhere in a NeXus file. If it exists and has the same shape as the dataset, you are supposed to divide the data by the weights. 
+Ray's proposal: DATASETNAME_weights anywhere in a NeXus file. If it exists and has the same shape as the dataset, you are supposed to divide the data by the weights. 
 
 9 for, abstain 1, 
 
@@ -199,15 +199,15 @@ Array of strings are not allowed in situations where a single string is expected
 
 This is a recovery of the signal=1, signal=2, signal=n feature which we used to have in the old way of handling axes. 
 
-Proposal: additional group level attribute auxiliary_signals which is an array of strings holding the names of additional signals to be plotted with the signal. They all need to be of the same shape. 
+Proposal: additional group level attribute `auxiliary_signals` which is an array of strings holding the names of additional signals to be plotted with the signal. They all need to be of the same shape. 
 
 All in favor. 
 
 ### Extended Use of the Defaults Attribute
 
-Currently we have a default attribute at root level which points to the default data. Currently this is restricted to NXroot, NXentry, NXsubentry.
+Currently we have a `default` attribute at root level which points to the default data. Currently this is restricted to NXroot, NXentry, NXsubentry.
 
-Proposal: allow the default attribute for any NeXus group which contains a plotable NXdata. 
+Proposal: allow the `default` attribute for any NeXus group which contains a plotable NXdata. 
 
 All in favor 
 
@@ -331,11 +331,11 @@ This is to be placed into the documentation.
 
 ### NeXus Target Attribute
 
-The target attribute denoting the origin of a linked data item is broken as it only works for internal links.
+The `target` attribute denoting the origin of a linked data item is broken as it only works for internal links.
 
 We discussed this a little but could not come to an agreement. The technical issues raised by this problems need to be looked at in more detail. 
 
-Thus this Proposal: While the NIAC is working at the problem of the broken target attribute for external links, we document the problem with it.
+Thus this Proposal: While the NIAC is working at the problem of the broken `target` attribute for external links, we document the problem with it.
 
 7 in favor, 0 abstains, 0 no
 
@@ -351,7 +351,7 @@ NeXus is not built for accelerators, thus there is a case for a new tree of grou
 
 ### NXenvironment
 
-Proposal: In NXsample mark magnetic_field_log and temperature_log as deprecated. To be replaced with NXlog classes with the log dropped of the name. 
+Proposal: In NXsample, mark `magnetic_field_log` and `temperature_log` as deprecated. To be replaced with NXlog classes with the log dropped of the name. 
 
 1 abstain, rest in favor
 
