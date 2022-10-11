@@ -35,4 +35,14 @@ Anything discussed here is merely a suggestion and the only rules to be followed
    * Date and time of the meeting.
    * link to the meeting agenda page.
    * Attach the calendar `.ics` file.
+
+
+## Membership Vote
+Membership on the NIAC expires after [a term of 3 years](https://www.nexusformat.org/Membership_Dates.html). New (or renewing) members require a nomination letter from their facility/organisation.
+1. Send an email to the nexus-committee list asking everyone to to vote to accept the new member on the NIAC. (Remember to give a deadline.)
+2. Once the deadline has passed, check that the majority has voted to accept the new member.
+3. Send another email to the nexus-committee list giving the result.
+4. If the member is accepted:
+  * update the [NIAC membership list](https://github.com/nexusformat/wiki/blob/master/content/NIAC.md)
+  * update the [expiration dates list](https://github.com/nexusformat/wiki/blob/master/content/Membership_Dates.md)
   
