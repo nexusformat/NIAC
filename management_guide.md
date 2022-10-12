@@ -35,6 +35,7 @@ Anything discussed here is merely a suggestion and the only rules to be followed
    * Date and time of the meeting.
    * link to the meeting agenda page.
    * Attach the calendar `.ics` file.
+   * If special guests have been invited to join the meeting, then make sure they also receive the email.
 
 
 ## Membership Vote
