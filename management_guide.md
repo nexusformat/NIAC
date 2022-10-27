@@ -36,8 +36,8 @@ Anything discussed here is merely a suggestion and the only rules to be followed
    * link to the meeting agenda page.
    * Attach the calendar `.ics` file.
    * If special guests have been invited to join the meeting, then make sure they also receive the email.
-
-
+6. At the meeting you should have one person running the meeting (i.e. leading the discussions) and another person taking minutes.
+7. After the meeting, post the minutes on the agenda page you created earlier (i.e. `Telco_YYYMMDD.md`). Then, go back to step #1 to start setting up the next meeting.
 ## Membership Vote
 Membership on the NIAC expires after [a term of 3 years](https://www.nexusformat.org/Membership_Dates.html). New (or renewing) members require a nomination letter from their facility/organisation.
 1. Send an email to the nexus-committee list asking everyone to to vote to accept the new member on the NIAC. (Remember to give a deadline.)
